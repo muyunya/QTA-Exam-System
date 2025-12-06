@@ -45,29 +45,31 @@ def main():
         
     except ImportError as e:
         # 导入错误，可能是依赖未安装
-        print("=" * 50)
-        print("错误：缺少必要的依赖包")
-        print("=" * 50)
-        print(f"详细信息：{e}")
-        print()
-        print("请运行以下命令安装依赖：")
-        print("  pip install ttkbootstrap pygments")
-        print()
-        input("按回车键退出...")
+        err_msg = f"错误：缺少必要的依赖包\n详细信息：{e}\n\n请运行：pip install ttkbootstrap pygments"
+        print(err_msg)
+        try:
+            import tkinter.messagebox
+            import tkinter as tk
+            root = tk.Tk()
+            root.withdraw()
+            tkinter.messagebox.showerror("启动错误", err_msg)
+        except:
+            pass
         sys.exit(1)
         
     except Exception as e:
         # 其他错误
-        print("=" * 50)
-        print("程序运行出错")
-        print("=" * 50)
-        print(f"错误类型：{type(e).__name__}")
-        print(f"错误信息：{e}")
-        print()
         import traceback
-        traceback.print_exc()
-        print()
-        input("按回车键退出...")
+        err_msg = f"程序运行出错\n错误类型：{type(e).__name__}\n错误信息：{e}\n\n{traceback.format_exc()}"
+        print(err_msg)
+        try:
+            import tkinter.messagebox
+            import tkinter as tk
+            root = tk.Tk()
+            root.withdraw()
+            tkinter.messagebox.showerror("运行错误", err_msg)
+        except:
+            pass
         sys.exit(1)
 
 
