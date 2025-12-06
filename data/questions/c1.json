@@ -1,0 +1,529 @@
+{
+    "meta": {
+        "name": "C语言入门题库_第一阶段",
+        "version": "1.0",
+        "author": "AI Assistant",
+        "description": "C语言基础题库，涵盖变量、运算符、流程控制（1-40题）"
+    },
+    "questions": [
+        {
+            "id": 1,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["基础语法"],
+            "question": "C语言程序执行的入口函数是？",
+            "options": [
+                "A. start()",
+                "B. main()",
+                "C. program()",
+                "D. init()"
+            ],
+            "answer": "B",
+            "explanation": "C语言程序总是从 main 函数开始执行。"
+        },
+        {
+            "id": 2,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["预处理"],
+            "question": "在使用 printf 函数之前，需要包含的头文件是 ____ 。",
+            "answer": ["<stdio.h>|stdio.h"],
+            "explanation": "Standard Input Output header (标准输入输出头文件)。"
+        },
+        {
+            "id": 3,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["基础语法"],
+            "question": "C语言中的每一条语句都必须以分号结尾。",
+            "answer": true,
+            "explanation": "分号是C语言语句的结束标志。"
+        },
+        {
+            "id": 4,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["数据类型"],
+            "question": "以下哪个是C语言中合法的变量名？",
+            "options": [
+                "A. 1st_number",
+                "B. int",
+                "C. _myVar",
+                "D. char-val"
+            ],
+            "answer": "C",
+            "explanation": "变量名不能以数字开头，不能是关键字(如int)，不能包含减号。下划线开头是合法的。"
+        },
+        {
+            "id": 5,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["基础语法", "IO"],
+            "question": "编写代码：在屏幕上输出 \"Hello, C Language!\"",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    // 请在此处编写代码\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "Hello, C Language!"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, C Language!\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "使用 printf 函数进行输出。"
+        },
+        {
+            "id": 6,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["数据类型"],
+            "question": "int 类型通常占用多少字节（在常见的32/64位编译器下）？",
+            "options": [
+                "A. 1",
+                "B. 2",
+                "C. 4",
+                "D. 8"
+            ],
+            "answer": "C",
+            "explanation": "虽然标准只规定 int 至少为 2 字节，但在现代主流编译器中通常为 4 字节。"
+        },
+        {
+            "id": 7,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["IO"],
+            "question": "printf函数中，用于输出整数的占位符是 ____，输出浮点数的占位符是 ____。",
+            "answer": ["%d", "%f"],
+            "explanation": "%d用于int，%f用于float/double。"
+        },
+        {
+            "id": 8,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["运算"],
+            "question": "编写程序，输入两个整数，计算并输出它们的和。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 请在此处计算并输出\n    return 0;\n}",
+            "test_cases": [
+                {"input": "10 20", "expected_output": "30"},
+                {"input": "-5 5", "expected_output": "0"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\", a + b);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "使用 + 运算符计算和。"
+        },
+        {
+            "id": 9,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["运算"],
+            "question": "表达式 5 / 2 的结果是？",
+            "options": [
+                "A. 2.5",
+                "B. 2",
+                "C. 3",
+                "D. 2.0"
+            ],
+            "answer": "B",
+            "explanation": "两个整数相除，结果只保留整数部分（向下取整）。"
+        },
+        {
+            "id": 10,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["运算"],
+            "question": "求余运算符是 ____，它只能作用于 ____ 类型的数据。",
+            "answer": ["%", "整数|int|整型"],
+            "explanation": "% 运算符不能用于浮点数。"
+        },
+        {
+            "id": 11,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["运算"],
+            "question": "表达式 a = 5 和 a == 5 的含义是相同的。",
+            "answer": false,
+            "explanation": "= 是赋值，== 是判断相等。"
+        },
+        {
+            "id": 12,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["数据类型"],
+            "question": "输入一个大写字母，将其转换为小写字母输出。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    char c;\n    scanf(\"%c\", &c);\n    // 请实现转换\n    return 0;\n}",
+            "test_cases": [
+                {"input": "A", "expected_output": "a"},
+                {"input": "Z", "expected_output": "z"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    char c;\n    scanf(\"%c\", &c);\n    printf(\"%c\", c + 32);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "ASCII码中，小写字母比对应的大写字母大32。"
+        },
+        {
+            "id": 13,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["运算"],
+            "question": "若 int a = 10; 则执行 int b = a++; 后，b的值是？",
+            "options": [
+                "A. 10",
+                "B. 11",
+                "C. 9",
+                "D. 12"
+            ],
+            "answer": "A",
+            "explanation": "a++ 是后缀自增，先赋值给b，a再自增。所以b=10，a变成11。"
+        },
+        {
+            "id": 14,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["运算", "数据类型"],
+            "question": "输入圆的半径r，计算圆的面积(S = 3.14 * r * r)，保留两位小数。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    float r;\n    scanf(\"%f\", &r);\n    // 请输出面积，保留两位小数\n    return 0;\n}",
+            "test_cases": [
+                {"input": "2", "expected_output": "12.56"},
+                {"input": "1", "expected_output": "3.14"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    float r;\n    scanf(\"%f\", &r);\n    printf(\"%.2f\", 3.14 * r * r);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "%.2f 用于保留两位小数输出。"
+        },
+        {
+            "id": 15,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["逻辑"],
+            "question": "逻辑与运算符是 ____，逻辑或运算符是 ____。",
+            "options": [
+                "A. & 和 |",
+                "B. && 和 ||",
+                "C. and 和 or",
+                "D. || 和 &&"
+            ],
+            "answer": "B",
+            "explanation": "&和|是位运算符，&&和||是逻辑运算符。"
+        },
+        {
+            "id": 16,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["if"],
+            "question": "输入一个整数，判断它是奇数还是偶数。偶数输出Even，奇数输出Odd。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 请判断\n    return 0;\n}",
+            "test_cases": [
+                {"input": "4", "expected_output": "Even"},
+                {"input": "7", "expected_output": "Odd"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if(n % 2 == 0) printf(\"Even\");\n    else printf(\"Odd\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "对2取余为0即为偶数。"
+        },
+        {
+            "id": 17,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["if"],
+            "question": "if(a=5) 这个判断条件在C语言中是合法的，且条件永远为真。",
+            "answer": true,
+            "explanation": "a=5 是赋值表达式，其值为5（非0），在C语言中非0即为真。虽然合法，但通常是逻辑错误。"
+        },
+        {
+            "id": 18,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["运算"],
+            "question": "三元运算符 a > b ? a : b 的作用是？",
+            "options": [
+                "A. 求a和b的和",
+                "B. 交换a和b的值",
+                "C. 取a和b中的较大值",
+                "D. 取a和b中的较小值"
+            ],
+            "answer": "C",
+            "explanation": "如果a>b，结果为a，否则结果为b。"
+        },
+        {
+            "id": 19,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["if"],
+            "question": "输入三个整数，输出其中最大的一个数。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    // 找最大值\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1 5 3", "expected_output": "5"},
+                {"input": "10 2 2", "expected_output": "10"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a, b, c, max;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    max = a;\n    if(b > max) max = b;\n    if(c > max) max = c;\n    printf(\"%d\", max);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "假设第一个最大，然后依次比较更新。"
+        },
+        {
+            "id": 20,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["switch"],
+            "question": "在 switch 语句中，如果希望执行完一个 case 后不继续执行下一个 case，必须使用 ____ 语句。",
+            "answer": ["break"],
+            "explanation": "没有break会发生“穿透”现象。"
+        },
+        {
+            "id": 21,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["switch"],
+            "question": "switch(exp) 中，exp 的类型不能是？",
+            "options": [
+                "A. int",
+                "B. char",
+                "C. float",
+                "D. short"
+            ],
+            "answer": "C",
+            "explanation": "switch 的判断条件必须是整型或字符型，不能是浮点型。"
+        },
+        {
+            "id": 22,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["if", "逻辑"],
+            "question": "输入年份，判断是否为闰年。闰年条件：能被4整除但不能被100整除，或者能被400整除。是输出Yes，否输出No。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int year;\n    scanf(\"%d\", &year);\n    // 判断逻辑\n    return 0;\n}",
+            "test_cases": [
+                {"input": "2000", "expected_output": "Yes"},
+                {"input": "1900", "expected_output": "No"},
+                {"input": "2024", "expected_output": "Yes"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int year;\n    scanf(\"%d\", &year);\n    if((year%4==0 && year%100!=0) || year%400==0)\n        printf(\"Yes\");\n    else\n        printf(\"No\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "逻辑表达式组合：(year%4==0 && year%100!=0) || year%400==0"
+        },
+        {
+            "id": 23,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["循环"],
+            "question": "while(1) { ... } 是一个死循环。",
+            "answer": true,
+            "explanation": "1表示真，条件永远满足。"
+        },
+        {
+            "id": 24,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["循环"],
+            "question": "使用 for 循环计算 1 + 2 + ... + 100 的和。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int sum = 0;\n    // 编写循环\n    printf(\"%d\", sum);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "5050"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int sum = 0;\n    for(int i=1; i<=100; i++) {\n        sum += i;\n    }\n    printf(\"%d\", sum);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "累加器模式。"
+        },
+        {
+            "id": 25,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["循环"],
+            "question": "do-while 循环和 while 循环的主要区别是？",
+            "options": [
+                "A. do-while 至少执行一次循环体",
+                "B. while 至少执行一次循环体",
+                "C. do-while 不能用于死循环",
+                "D. 没有区别"
+            ],
+            "answer": "A",
+            "explanation": "do-while 是先执行后判断。"
+        },
+        {
+            "id": 26,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["循环"],
+            "question": "输入一个正整数 n，计算 n! (n的阶乘)。例如输入5，输出120。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    long long result = 1;\n    scanf(\"%d\", &n);\n    // 阶乘计算\n    return 0;\n}",
+            "test_cases": [
+                {"input": "5", "expected_output": "120"},
+                {"input": "3", "expected_output": "6"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n;\n    long long result = 1;\n    scanf(\"%d\", &n);\n    for(int i=1; i<=n; i++) {\n        result *= i;\n    }\n    printf(\"%lld\", result);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "累乘，注意使用 long long 防止溢出。"
+        },
+        {
+            "id": 27,
+            "type": "fill_blank",
+            "difficulty": "medium",
+            "tags": ["循环"],
+            "question": "在循环中，____ 语句用于结束当前次循环，直接进入下一次循环判断；____ 语句用于跳出整个循环。",
+            "answer": ["continue", "break"],
+            "explanation": "continue 跳过本次，break 跳出每层。"
+        },
+        {
+            "id": 28,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["循环", "数学"],
+            "question": "打印出所有的“水仙花数”。水仙花数指一个3位数，其各位数字立方和等于该数本身 (100-999之间)。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    // 遍历100到999\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "153\n370\n371\n407"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a, b, c;\n    for(int i=100; i<1000; i++) {\n        a = i / 100;     // 百位\n        b = (i / 10) % 10; // 十位\n        c = i % 10;      // 个位\n        if(i == a*a*a + b*b*b + c*c*c) {\n            printf(\"%d\\n\", i);\n        }\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "分解各位数字是关键：除以100得百位，模10得个位。"
+        },
+        {
+            "id": 29,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["循环"],
+            "question": "for(int i=0; i<10; i+=2) 循环体会被执行多少次？",
+            "options": [
+                "A. 10",
+                "B. 5",
+                "C. 6",
+                "D. 4"
+            ],
+            "answer": "B",
+            "explanation": "i的值依次为0, 2, 4, 6, 8。共5次。"
+        },
+        {
+            "id": 30,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["循环"],
+            "question": "输入一个整数，将其逆序输出。例如输入 12345，输出 54321。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 逆序逻辑\n    return 0;\n}",
+            "test_cases": [
+                {"input": "123", "expected_output": "321"},
+                {"input": "1230", "expected_output": "0321"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) printf(\"0\");\n    while(n != 0) {\n        printf(\"%d\", n % 10);\n        n /= 10;\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "不断取余输出个位，然后除以10去掉个位。"
+        },
+        {
+            "id": 31,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["数据类型"],
+            "question": "char 类型的变量实际上存储的是字符对应的 ASCII 码整数。",
+            "answer": true,
+            "explanation": "在C语言中，char本质上是小整数。"
+        },
+        {
+            "id": 32,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["循环", "数学"],
+            "question": "判断一个数 n 是否为素数（质数）。是输出 Yes，否输出 No。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 质数判断\n    return 0;\n}",
+            "test_cases": [
+                {"input": "7", "expected_output": "Yes"},
+                {"input": "4", "expected_output": "No"},
+                {"input": "1", "expected_output": "No"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n, isPrime = 1;\n    scanf(\"%d\", &n);\n    if (n <= 1) isPrime = 0;\n    for(int i=2; i*i <= n; i++) {\n        if(n % i == 0) {\n            isPrime = 0;\n            break;\n        }\n    }\n    if(isPrime) printf(\"Yes\");\n    else printf(\"No\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "从2遍历到sqrt(n)，如果能被整除则不是素数。"
+        },
+        {
+            "id": 33,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["循环", "图形"],
+            "question": "打印 9x9 乘法表。要求格式整齐（使用 %d\\t）。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    // 双重循环\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "包含 1x1=1 ... 9x9=81"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    for(int i=1; i<=9; i++) {\n        for(int j=1; j<=i; j++) {\n            printf(\"%dx%d=%d\\t\", j, i, i*j);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "外层控制行，内层控制列，注意换行。"
+        },
+        {
+            "id": 34,
+            "type": "fill_blank",
+            "difficulty": "medium",
+            "tags": ["位运算"],
+            "question": "位运算符 ^ 表示 ____，<< 表示 ____。",
+            "answer": ["异或", "左移"],
+            "explanation": "Bitwise XOR and Left Shift."
+        },
+        {
+            "id": 35,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["数学", "循环"],
+            "question": "输入两个整数，求它们的最大公约数 (GCD)。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // 辗转相除法\n    return 0;\n}",
+            "test_cases": [
+                {"input": "12 18", "expected_output": "6"},
+                {"input": "7 3", "expected_output": "1"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a, b, temp;\n    scanf(\"%d %d\", &a, &b);\n    while(b != 0) {\n        temp = a % b;\n        a = b;\n        b = temp;\n    }\n    printf(\"%d\", a);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "辗转相除法：a % b 得到余数，交换 a b 继续运算直到余数为0。"
+        },
+        {
+            "id": 36,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["作用域"],
+            "question": "在函数内部定义的变量（不加static），其作用域是？",
+            "options": [
+                "A. 整个程序",
+                "B. 该函数内部",
+                "C. 整个文件",
+                "D. main函数"
+            ],
+            "answer": "B",
+            "explanation": "局部变量的作用域仅限于定义它的代码块内。"
+        },
+        {
+            "id": 37,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["循环", "数学"],
+            "question": "斐波那契数列：1, 1, 2, 3, 5, 8... 输入 n，输出第 n 项。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 计算第n项\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1", "expected_output": "1"},
+                {"input": "6", "expected_output": "8"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n, t1 = 1, t2 = 1, nextTerm;\n    scanf(\"%d\", &n);\n    if (n == 1 || n == 2) printf(\"1\");\n    else {\n        for (int i = 3; i <= n; ++i) {\n            nextTerm = t1 + t2;\n            t1 = t2;\n            t2 = nextTerm;\n        }\n        printf(\"%d\", t2);\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "迭代法计算，避免递归性能问题。"
+        },
+        {
+            "id": 38,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["基础语法"],
+            "question": "C语言中，单引号用于表示 ____，双引号用于表示 ____。",
+            "answer": ["字符|char", "字符串|string"],
+            "explanation": "'a' 是字符，\"a\" 是包含'a'和'\\0'的字符串。"
+        },
+        {
+            "id": 39,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["类型转换"],
+            "question": "(int)3.9 的结果是 4。",
+            "answer": false,
+            "explanation": "强制类型转换浮点转整型是直接截断小数部分，结果为3。"
+        },
+        {
+            "id": 40,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["循环", "图形"],
+            "question": "输入行数 n，打印 n 行的星号直角三角形。\n*\n**\n***",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // 打印图形\n    return 0;\n}",
+            "test_cases": [
+                {"input": "3", "expected_output": "*\n**\n***"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for(int i=1; i<=n; i++) {\n        for(int j=1; j<=i; j++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "外层循环控制行数，内层循环控制每行的星号数量。"
+        }
+    ]
+}

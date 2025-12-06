@@ -1,0 +1,532 @@
+{
+    "meta": {
+        "name": "C语言入门题库_第二阶段",
+        "version": "1.0",
+        "author": "AI Assistant",
+        "description": "C语言进阶基础，涵盖数组、字符串处理、函数封装与指针初探（41-80题）"
+    },
+    "questions": [
+        {
+            "id": 41,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["数组"],
+            "question": "定义一个包含10个整数的数组，以下写法正确的是？",
+            "options": [
+                "A. int a[10];",
+                "B. int a(10);",
+                "C. array int a[10];",
+                "D. int a = [10];"
+            ],
+            "answer": "A",
+            "explanation": "C语言数组定义格式为：类型 数组名[大小];"
+        },
+        {
+            "id": 42,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["数组"],
+            "question": "如果定义 int a[5]; 那么访问 a[5] 是合法的。",
+            "answer": false,
+            "explanation": "数组下标从0开始，a[5]越界，合法下标是0到4。"
+        },
+        {
+            "id": 43,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["数组"],
+            "question": "在C语言中，数组名本身代表数组的 ____ 地址。",
+            "answer": ["首|起始|第一个元素"],
+            "explanation": "数组名 a 等价于 &a[0]。"
+        },
+        {
+            "id": 44,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["数组"],
+            "question": "输入5个整数存入数组，计算并输出它们的平均值（保留1位小数）。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    int sum = 0;\n    // 1. 输入 2. 累加\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1 2 3 4 5", "expected_output": "3.0"},
+                {"input": "10 20 30 40 50", "expected_output": "30.0"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    int sum = 0;\n    for(int i=0; i<5; i++) {\n        scanf(\"%d\", &arr[i]);\n        sum += arr[i];\n    }\n    printf(\"%.1f\", (float)sum / 5);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "注意整数除法需要强转浮点数。"
+        },
+        {
+            "id": 45,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["数组"],
+            "question": "输入5个整数，找出其中的最大值。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    // 输入并寻找最大值\n    return 0;\n}",
+            "test_cases": [
+                {"input": "12 5 88 3 9", "expected_output": "88"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    for(int i=0; i<5; i++) scanf(\"%d\", &arr[i]);\n    int max = arr[0];\n    for(int i=1; i<5; i++) {\n        if(arr[i] > max) max = arr[i];\n    }\n    printf(\"%d\", max);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "擂台法：假设第一个是最大的，后面依次挑战。"
+        },
+        {
+            "id": 46,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["数组"],
+            "question": "将一个包含5个元素的数组原地逆序。如输入 1 2 3 4 5，输出 5 4 3 2 1。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    // 输入\n    // 逆序操作\n    // 输出\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1 2 3 4 5", "expected_output": "5 4 3 2 1"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    for(int i=0; i<5; i++) scanf(\"%d\", &arr[i]);\n    for(int i=0; i<5/2; i++) {\n        int temp = arr[i];\n        arr[i] = arr[4-i];\n        arr[4-i] = temp;\n    }\n    for(int i=0; i<5; i++) printf(\"%d \", arr[i]);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "首尾交换，交换次数为长度的一半。"
+        },
+        {
+            "id": 47,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["数组", "排序"],
+            "question": "冒泡排序：输入5个乱序整数，从小到大排序后输出。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int a[5];\n    // 输入\n    // 冒泡排序逻辑\n    // 输出\n    return 0;\n}",
+            "test_cases": [
+                {"input": "5 4 3 2 1", "expected_output": "1 2 3 4 5"},
+                {"input": "10 2 8 4 6", "expected_output": "2 4 6 8 10"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a[5];\n    for(int i=0; i<5; i++) scanf(\"%d\", &a[i]);\n    for(int i=0; i<4; i++) {\n        for(int j=0; j<4-i; j++) {\n            if(a[j] > a[j+1]) {\n                int temp = a[j];\n                a[j] = a[j+1];\n                a[j+1] = temp;\n            }\n        }\n    }\n    for(int i=0; i<5; i++) printf(\"%d \", a[i]);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "外层循环控制轮数，内层循环两两比较交换。"
+        },
+        {
+            "id": 48,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["数组"],
+            "question": "int a[3][4]; 定义了一个二维数组，它总共包含多少个元素？",
+            "options": [
+                "A. 7",
+                "B. 12",
+                "C. 3",
+                "D. 4"
+            ],
+            "answer": "B",
+            "explanation": "3行4列，共 3 * 4 = 12 个元素。"
+        },
+        {
+            "id": 49,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["数组", "矩阵"],
+            "question": "输入一个 3x3 的整数矩阵，实现矩阵转置（行列互换）并输出。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int a[3][3];\n    // 输入\n    // 转置\n    // 输出\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1 2 3 4 5 6 7 8 9", "expected_output": "1 4 7\n2 5 8\n3 6 9"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int a[3][3];\n    for(int i=0; i<3; i++)\n        for(int j=0; j<3; j++) scanf(\"%d\", &a[i][j]);\n    \n    for(int i=0; i<3; i++) {\n        for(int j=0; j<3; j++) {\n            printf(\"%d \", a[j][i]); // 直接交换下标输出即可\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "输出时将 a[i][j] 变为 a[j][i] 即可实现转置效果。"
+        },
+        {
+            "id": 50,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["数组"],
+            "question": "二维数组在内存中是按列优先存储的。",
+            "answer": false,
+            "explanation": "C语言中二维数组是按行优先（Row-major）存储的。"
+        },
+        {
+            "id": 51,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["字符串"],
+            "question": "C语言中字符串的结束标志是？",
+            "options": [
+                "A. '.'",
+                "B. '\\n'",
+                "C. '\\0'",
+                "D. EOF"
+            ],
+            "answer": "C",
+            "explanation": "空字符 \\0 是字符串结束的唯一标志。"
+        },
+        {
+            "id": 52,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["字符串"],
+            "question": "编写程序，输入一个字符串（不含空格），不使用 strlen 函数，计算并输出其长度。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = 0;\n    // 计算长度\n    printf(\"%d\", len);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "hello", "expected_output": "5"},
+                {"input": "abc", "expected_output": "3"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = 0;\n    while(s[len] != '\\0') {\n        len++;\n    }\n    printf(\"%d\", len);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "遍历字符数组直到遇到 \\0。"
+        },
+        {
+            "id": 53,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["字符串", "IO"],
+            "question": "如果要输入包含空格的字符串（如 \"Hello World\"），应该使用哪个函数？",
+            "options": [
+                "A. scanf(\"%s\", ...)",
+                "B. gets(...) 或 fgets(...)",
+                "C. getchar()",
+                "D. printf(...)"
+            ],
+            "answer": "B",
+            "explanation": "scanf(\"%s\") 遇到空格会停止读取，gets/fgets 可以读取整行。"
+        },
+        {
+            "id": 54,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["字符串"],
+            "question": "不使用 strcpy，将字符串 src 复制到 dest 中。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    char src[100], dest[100];\n    scanf(\"%s\", src);\n    // 复制逻辑\n    printf(\"%s\", dest);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "copyMe", "expected_output": "copyMe"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    char src[100], dest[100];\n    scanf(\"%s\", src);\n    int i = 0;\n    while(src[i] != '\\0') {\n        dest[i] = src[i];\n        i++;\n    }\n    dest[i] = '\\0'; // 别忘了结束符\n    printf(\"%s\", dest);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "逐个字符赋值，最后手动添加 \\0。"
+        },
+        {
+            "id": 55,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["字符串"],
+            "question": "用于比较两个字符串内容是否相同的标准库函数是 ____。",
+            "answer": ["strcmp"],
+            "explanation": "需要包含 string.h 头文件。"
+        },
+        {
+            "id": 56,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["字符串", "逻辑"],
+            "question": "统计单词个数：输入一行英文（只包含字母和空格），统计单词的数量。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    char s[100];\n    // 建议使用 fgets 读取整行\n    // 统计逻辑\n    return 0;\n}",
+            "test_cases": [
+                {"input": "I love C", "expected_output": "3"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    char s[100];\n    fgets(s, 100, stdin);\n    int count = 0, i = 0, word = 0;\n    while(s[i] != '\\0') {\n        if(s[i] == ' ' || s[i] == '\\n') word = 0;\n        else if(word == 0) {\n            word = 1;\n            count++;\n        }\n        i++;\n    }\n    printf(\"%d\", count);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "状态机思想：从非单词进入单词状态时计数+1。"
+        },
+        {
+            "id": 57,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["字符串"],
+            "question": "判断回文串：输入一个字符串，判断是否左右对称。是输出Yes，否输出No。",
+            "code_template": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    // 判断逻辑\n    return 0;\n}",
+            "test_cases": [
+                {"input": "aba", "expected_output": "Yes"},
+                {"input": "hello", "expected_output": "No"}
+            ],
+            "answer_code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char s[100];\n    scanf(\"%s\", s);\n    int len = strlen(s);\n    int flag = 1;\n    for(int i=0; i<len/2; i++) {\n        if(s[i] != s[len-1-i]) {\n            flag = 0;\n            break;\n        }\n    }\n    if(flag) printf(\"Yes\");\n    else printf(\"No\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "首尾向中间逼近比较。"
+        },
+        {
+            "id": 58,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["字符串"],
+            "question": "char s[] = \"Hello\"; printf(\"%d %d\", sizeof(s), strlen(s)); 的输出结果是？",
+            "options": [
+                "A. 5 5",
+                "B. 6 5",
+                "C. 6 6",
+                "D. 5 6"
+            ],
+            "answer": "B",
+            "explanation": "sizeof 计算占用内存大小（包含\\0，共6），strlen 计算有效字符长度（不含\\0，共5）。"
+        },
+        {
+            "id": 59,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["字符串"],
+            "question": "不使用 strcat，将字符串 s2 连接到 s1 的末尾。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    char s1[100] = \"Hello\";\n    char s2[] = \"World\";\n    // 连接代码\n    printf(\"%s\", s1);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "HelloWorld"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    char s1[100] = \"Hello\";\n    char s2[] = \"World\";\n    int i = 0, j = 0;\n    while(s1[i] != '\\0') i++; // 找到s1末尾\n    while(s2[j] != '\\0') {\n        s1[i] = s2[j];\n        i++;\n        j++;\n    }\n    s1[i] = '\\0';\n    printf(\"%s\", s1);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "先定位到s1的\\0位置，然后从该位置开始追加s2。"
+        },
+        {
+            "id": 60,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["字符串"],
+            "question": "字符串 \"A\" 和字符 'A' 在内存中占用的字节数相同。",
+            "answer": false,
+            "explanation": "\"A\" 包含 'A'和'\\0' 占2字节，'A' 占1字节。"
+        },
+        {
+            "id": 61,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["函数"],
+            "question": "关于函数，以下说法错误的是？",
+            "options": [
+                "A. 函数可以嵌套定义",
+                "B. 函数可以嵌套调用",
+                "C. 一个C程序必须包含一个main函数",
+                "D. 函数可以没有返回值"
+            ],
+            "answer": "A",
+            "explanation": "C语言中，函数不能嵌套定义（即在函数内部定义另一个函数），但可以嵌套调用。"
+        },
+        {
+            "id": 62,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["函数"],
+            "question": "如果函数不需要返回值，其返回类型应声明为 void。",
+            "answer": true,
+            "explanation": "void 表示空类型，无返回值。"
+        },
+        {
+            "id": 63,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["函数"],
+            "question": "定义一个函数 isPrime(int n)，判断 n 是否为素数。是返回1，否返回0。在 main 中调用验证。",
+            "code_template": "#include <stdio.h>\n\n// 请定义 isPrime 函数\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if(isPrime(n)) printf(\"Yes\");\n    else printf(\"No\");\n    return 0;\n}",
+            "test_cases": [
+                {"input": "5", "expected_output": "Yes"},
+                {"input": "9", "expected_output": "No"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint isPrime(int n) {\n    if (n <= 1) return 0;\n    for(int i=2; i*i <= n; i++) {\n        if(n % i == 0) return 0;\n    }\n    return 1;\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if(isPrime(n)) printf(\"Yes\");\n    else printf(\"No\");\n    return 0;\n}",
+            "language": "c",
+            "explanation": "模块化编程，将逻辑封装在函数中。"
+        },
+        {
+            "id": 64,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["函数"],
+            "question": "C语言中，函数参数传递的默认方式是？",
+            "options": [
+                "A. 引用传递",
+                "B. 值传递",
+                "C. 指针传递",
+                "D. 双向传递"
+            ],
+            "answer": "B",
+            "explanation": "C语言默认是值传递（Pass by Value），即将实参的值复制一份给形参。"
+        },
+        {
+            "id": 65,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["函数"],
+            "question": "在函数外部定义的变量称为 ____ 变量，在整个文件有效；在函数内部定义的变量称为 ____ 变量。",
+            "answer": ["全局|Global", "局部|Local"],
+            "explanation": "Global vs Local."
+        },
+        {
+            "id": 66,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["函数", "递归"],
+            "question": "使用递归函数计算阶乘 n!。",
+            "code_template": "#include <stdio.h>\n\nlong long factorial(int n) {\n    // 递归实现\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\", factorial(n));\n    return 0;\n}",
+            "test_cases": [
+                {"input": "5", "expected_output": "120"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nlong long factorial(int n) {\n    if(n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%lld\", factorial(n));\n    return 0;\n}",
+            "language": "c",
+            "explanation": "递归终止条件是 n<=1。"
+        },
+        {
+            "id": 67,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["函数"],
+            "question": "编写函数 gcd(a, b) 求两个整数的最大公约数。",
+            "code_template": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    // 实现代码\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\", gcd(a, b));\n    return 0;\n}",
+            "test_cases": [
+                {"input": "12 8", "expected_output": "4"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint gcd(int a, int b) {\n    if (b == 0) return a;\n    return gcd(b, a % b);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\", gcd(a, b));\n    return 0;\n}",
+            "language": "c",
+            "explanation": "这里展示了递归写法的辗转相除法，也可以用循环。"
+        },
+        {
+            "id": 68,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["函数"],
+            "question": "在函数内部使用 static 关键字修饰局部变量，该变量的特点是？",
+            "options": [
+                "A. 变为全局变量",
+                "B. 每次调用函数时重置",
+                "C. 只能被main函数访问",
+                "D. 保持上一次调用结束时的值，且只初始化一次"
+            ],
+            "answer": "D",
+            "explanation": "静态局部变量存储在静态存储区，生命周期贯穿整个程序运行。"
+        },
+        {
+            "id": 69,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["函数"],
+            "question": "编写函数 power(x, n) 计算 x 的 n 次方 (x为double, n为int)。",
+            "code_template": "#include <stdio.h>\n\ndouble power(double x, int n) {\n    // 实现\n}\n\nint main() {\n    double x;\n    int n;\n    scanf(\"%lf %d\", &x, &n);\n    printf(\"%.2f\", power(x, n));\n    return 0;\n}",
+            "test_cases": [
+                {"input": "2.0 3", "expected_output": "8.00"}
+            ],
+            "answer_code": "#include <stdio.h>\n\ndouble power(double x, int n) {\n    double res = 1.0;\n    for(int i=0; i<n; i++) res *= x;\n    return res;\n}\n\nint main() {\n    double x;\n    int n;\n    scanf(\"%lf %d\", &x, &n);\n    printf(\"%.2f\", power(x, n));\n    return 0;\n}",
+            "language": "c",
+            "explanation": "简单的累乘实现。"
+        },
+        {
+            "id": 70,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["函数"],
+            "question": "如果函数的定义在 main 函数之后，则必须在 main 之前声明函数原型。",
+            "answer": true,
+            "explanation": "否则编译器在 main 中编译时无法识别该函数。"
+        },
+        {
+            "id": 71,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["指针"],
+            "question": "定义指针时使用符号 ____，获取变量地址使用符号 ____。",
+            "answer": ["*", "&"],
+            "explanation": "int *p; p = &a;"
+        },
+        {
+            "id": 72,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["指针"],
+            "question": "在32位操作系统中，sizeof(char *) 和 sizeof(int *) 的值分别是？",
+            "options": [
+                "A. 1 和 4",
+                "B. 4 和 4",
+                "C. 1 和 1",
+                "D. 8 和 8"
+            ],
+            "answer": "B",
+            "explanation": "指针存储的是地址，在32位系统中地址通常占4字节，与指向的类型无关。"
+        },
+        {
+            "id": 73,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["指针"],
+            "question": "编写 swap 函数，利用指针交换两个整数的值。",
+            "code_template": "#include <stdio.h>\n\nvoid swap(int *p1, int *p2) {\n    // 实现交换\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    swap(&a, &b);\n    printf(\"%d %d\", a, b);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "10 20", "expected_output": "20 10"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nvoid swap(int *p1, int *p2) {\n    int temp = *p1;\n    *p1 = *p2;\n    *p2 = temp;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    swap(&a, &b);\n    printf(\"%d %d\", a, b);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "通过解引用 *p 操作内存地址中的值。"
+        },
+        {
+            "id": 74,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["指针"],
+            "question": "若 int a=10; int *p=&a; 则 *p 的值是？",
+            "options": [
+                "A. a的地址",
+                "B. 10",
+                "C. p的地址",
+                "D. 未知"
+            ],
+            "answer": "B",
+            "explanation": "*p 取出了 p 指向地址中的值。"
+        },
+        {
+            "id": 75,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["指针"],
+            "question": "数组名 arr 可以看作是一个常量指针，不能对 arr 进行自增操作 (arr++)。",
+            "answer": true,
+            "explanation": "数组名是地址常量，不能被修改。"
+        },
+        {
+            "id": 76,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["指针"],
+            "question": "若 int *p; p++; 指针 p 向后移动了多少个字节？",
+            "options": [
+                "A. 1",
+                "B. sizeof(int)",
+                "C. 4",
+                "D. 取决于具体实现，通常是sizeof(int)"
+            ],
+            "answer": "D",
+            "explanation": "指针运算步长取决于它指向的数据类型，对于int通常是4字节。"
+        },
+        {
+            "id": 77,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["指针"],
+            "question": "使用指针遍历打印数组元素。输入5个数，用指针移动的方式输出。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    for(int i=0; i<5; i++) scanf(\"%d\", &arr[i]);\n    \n    int *p = arr;\n    // 使用指针循环输出\n    return 0;\n}",
+            "test_cases": [
+                {"input": "1 2 3 4 5", "expected_output": "1 2 3 4 5"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int arr[5];\n    for(int i=0; i<5; i++) scanf(\"%d\", &arr[i]);\n    \n    int *p = arr;\n    for(int i=0; i<5; i++) {\n        printf(\"%d \", *(p+i));\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "*(p+i) 等价于 arr[i]。"
+        },
+        {
+            "id": 78,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["指针"],
+            "question": "空指针 NULL 的值通常为 0。",
+            "answer": true,
+            "explanation": "NULL 本质上是 (void *)0。"
+        },
+        {
+            "id": 79,
+            "type": "single_choice",
+            "difficulty": "hard",
+            "tags": ["指针"],
+            "question": "int **p; 表示 p 是一个？",
+            "options": [
+                "A. 指向整数的指针",
+                "B. 指向指针的指针",
+                "C. 两个整数",
+                "D. 非法定义"
+            ],
+            "answer": "B",
+            "explanation": "二级指针，存储的是一级指针的地址。"
+        },
+        {
+            "id": 80,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["指针", "字符串"],
+            "question": "使用指针编写 my_strlen 函数计算字符串长度。",
+            "code_template": "#include <stdio.h>\n\nint my_strlen(char *s) {\n    // 使用指针计算\n}\n\nint main() {\n    char s[] = \"Hello\";\n    printf(\"%d\", my_strlen(s));\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "5"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint my_strlen(char *s) {\n    char *p = s;\n    while(*p != '\\0') {\n        p++;\n    }\n    return p - s;\n}\n\nint main() {\n    char s[] = \"Hello\";\n    printf(\"%d\", my_strlen(s));\n    return 0;\n}",
+            "language": "c",
+            "explanation": "指针减法：末尾指针减去起始指针等于元素个数。"
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+# QTA 刷题软件依赖包
+# 使用 pip install -r requirements.txt 安装
+
+# 现代化UI主题库
+ttkbootstrap>=1.10.0
+
+# 代码语法高亮
+pygments>=2.15.0

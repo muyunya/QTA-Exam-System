@@ -1,0 +1,243 @@
+{
+    "meta": {
+        "name": "Python基础题库",
+        "version": "1.0",
+        "author": "QTA",
+        "description": "Python编程语言基础知识练习题，包含各种题型示例"
+    },
+    "questions": [
+        {
+            "id": 1,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["基础", "变量"],
+            "question": "Python中用于定义变量的正确方式是？",
+            "options": [
+                "A. int x = 10",
+                "B. x = 10",
+                "C. var x = 10",
+                "D. let x = 10"
+            ],
+            "answer": "B",
+            "explanation": "Python是动态类型语言，直接使用 变量名 = 值 即可定义变量，不需要声明类型。选项A是Java/C语言风格，选项C和D是JavaScript风格。"
+        },
+        {
+            "id": 2,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["基础", "运算符"],
+            "question": "在Python中，表达式 3 ** 2 的结果是什么？",
+            "options": [
+                "A. 6",
+                "B. 9",
+                "C. 5",
+                "D. 32"
+            ],
+            "answer": "B",
+            "explanation": "在Python中，** 是幂运算符（指数运算），3 ** 2 表示3的2次方，结果是9。"
+        },
+        {
+            "id": 3,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["列表", "方法"],
+            "question": "以下哪个方法可以在Python列表末尾添加元素？",
+            "options": [
+                "A. list.add()",
+                "B. list.insert()",
+                "C. list.append()",
+                "D. list.push()"
+            ],
+            "answer": "C",
+            "explanation": "append()方法用于在列表末尾添加一个元素。insert()可以在指定位置插入元素，Python列表没有add()和push()方法。"
+        },
+        {
+            "id": 4,
+            "type": "multi_choice",
+            "difficulty": "medium",
+            "tags": ["数据类型"],
+            "question": "以下哪些是Python的内置数据类型？（多选）",
+            "options": [
+                "A. list（列表）",
+                "B. dict（字典）",
+                "C. array（数组）",
+                "D. tuple（元组）",
+                "E. set（集合）"
+            ],
+            "answer": ["A", "B", "D", "E"],
+            "explanation": "list、dict、tuple、set都是Python的内置数据类型。array需要导入array模块才能使用，不是内置类型。"
+        },
+        {
+            "id": 5,
+            "type": "multi_choice",
+            "difficulty": "medium",
+            "tags": ["循环", "语句"],
+            "question": "以下哪些是Python中有效的循环控制语句？（多选）",
+            "options": [
+                "A. break",
+                "B. continue",
+                "C. pass",
+                "D. exit",
+                "E. return"
+            ],
+            "answer": ["A", "B", "C"],
+            "explanation": "break用于跳出循环，continue用于跳过当前迭代继续下一次循环，pass是空语句可用于占位。exit()是函数不是语句，return用于函数返回不是循环控制。"
+        },
+        {
+            "id": 6,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["函数", "关键字"],
+            "question": "在Python中，定义函数使用的关键字是 ____",
+            "answer": ["def"],
+            "explanation": "Python使用 def 关键字定义函数，语法为：def 函数名(参数):"
+        },
+        {
+            "id": 7,
+            "type": "fill_blank",
+            "difficulty": "medium",
+            "tags": ["字符串", "方法"],
+            "question": "将字符串 'hello' 转换为大写，应该使用 ____ 方法",
+            "answer": ["upper|upper()"],
+            "explanation": "字符串的 upper() 方法可以将字符串中的所有字母转换为大写。例如：'hello'.upper() 返回 'HELLO'"
+        },
+        {
+            "id": 8,
+            "type": "fill_blank",
+            "difficulty": "hard",
+            "tags": ["列表推导式"],
+            "question": "使用列表推导式生成 [0, 1, 4, 9, 16] 的代码是：[x**2 for x in ____(5)]",
+            "answer": ["range"],
+            "explanation": "range(5) 生成 0, 1, 2, 3, 4，对每个数求平方得到 0, 1, 4, 9, 16"
+        },
+        {
+            "id": 9,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["基础", "概念"],
+            "question": "Python是一种编译型语言。",
+            "answer": false,
+            "explanation": "Python是解释型语言，不是编译型语言。Python代码在运行时由解释器逐行解释执行，而不是先编译成机器码再执行。"
+        },
+        {
+            "id": 10,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["列表", "概念"],
+            "question": "Python列表中的元素可以是不同类型的数据。",
+            "answer": true,
+            "explanation": "Python列表是动态类型的，同一个列表中可以存储不同类型的元素，如 [1, 'hello', 3.14, True]"
+        },
+        {
+            "id": 11,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["元组", "概念"],
+            "question": "元组(tuple)创建后可以修改其中的元素。",
+            "answer": false,
+            "explanation": "元组是不可变(immutable)数据类型，一旦创建就不能修改其中的元素。如果需要可变的序列，应该使用列表(list)。"
+        },
+        {
+            "id": 12,
+            "type": "short_answer",
+            "difficulty": "medium",
+            "tags": ["概念", "数据类型"],
+            "question": "请简述Python中列表(list)和元组(tuple)的主要区别。",
+            "answer": "列表是可变的(mutable)，可以添加、删除、修改元素；元组是不可变的(immutable)，创建后不能修改。列表使用方括号[]，元组使用圆括号()。由于不可变性，元组可以作为字典的键，而列表不能。",
+            "keywords": ["可变", "不可变", "mutable", "immutable", "修改", "方括号", "圆括号"],
+            "explanation": "这是Python基础概念题，理解可变与不可变类型的区别很重要。"
+        },
+        {
+            "id": 13,
+            "type": "short_answer",
+            "difficulty": "medium",
+            "tags": ["函数", "概念"],
+            "question": "什么是Python中的装饰器(decorator)？请简要说明其作用。",
+            "answer": "装饰器是一种函数，它可以在不修改原函数代码的情况下，为函数添加额外的功能。装饰器本质上是一个接受函数作为参数并返回新函数的高阶函数。使用@符号来应用装饰器。",
+            "keywords": ["函数", "不修改", "额外功能", "高阶函数", "@"],
+            "explanation": "装饰器是Python中的高级特性，常用于日志记录、权限验证、性能统计等场景。"
+        },
+        {
+            "id": 14,
+            "type": "coding",
+            "difficulty": "easy",
+            "tags": ["编程", "函数"],
+            "question": "编写一个函数 add(a, b)，返回两个数的和。",
+            "code_template": "def add(a, b):\n    # 请在此处编写代码\n    # 返回 a 和 b 的和\n    pass",
+            "test_cases": [
+                {"input": "1, 2", "expected_output": "3"},
+                {"input": "10, 20", "expected_output": "30"},
+                {"input": "-5, 5", "expected_output": "0"}
+            ],
+            "answer_code": "def add(a, b):\n    return a + b",
+            "explanation": "这是一个简单的函数定义练习，只需要返回两个参数的和即可。",
+            "language": "python"
+        },
+        {
+            "id": 15,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["编程", "循环"],
+            "question": "编写一个函数 sum_to_n(n)，计算从1到n的所有整数的和。例如：sum_to_n(5) 应该返回 15（即 1+2+3+4+5）。",
+            "code_template": "def sum_to_n(n):\n    # 请在此处编写代码\n    # 计算 1 到 n 的和并返回\n    pass",
+            "test_cases": [
+                {"input": "5", "expected_output": "15"},
+                {"input": "10", "expected_output": "55"},
+                {"input": "1", "expected_output": "1"},
+                {"input": "100", "expected_output": "5050"}
+            ],
+            "answer_code": "def sum_to_n(n):\n    return sum(range(1, n + 1))",
+            "explanation": "可以使用循环累加，也可以使用内置的sum()函数配合range()。还有一个数学公式：n*(n+1)//2",
+            "language": "python"
+        },
+        {
+            "id": 16,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["编程", "字符串"],
+            "question": "编写一个函数 reverse_string(s)，返回字符串s的逆序。例如：reverse_string('hello') 应该返回 'olleh'。",
+            "code_template": "def reverse_string(s):\n    # 请在此处编写代码\n    # 返回字符串 s 的逆序\n    pass",
+            "test_cases": [
+                {"input": "'hello'", "expected_output": "olleh"},
+                {"input": "'Python'", "expected_output": "nohtyP"},
+                {"input": "'a'", "expected_output": "a"},
+                {"input": "''", "expected_output": ""}
+            ],
+            "answer_code": "def reverse_string(s):\n    return s[::-1]",
+            "explanation": "Python中可以使用切片 s[::-1] 来逆序字符串，这是最简洁的方法。也可以使用 ''.join(reversed(s)) 或循环实现。",
+            "language": "python"
+        },
+        {
+            "id": 17,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["编程", "递归"],
+            "question": "编写一个函数 fibonacci(n)，返回斐波那契数列的第n项（从0开始计数）。斐波那契数列：0, 1, 1, 2, 3, 5, 8, 13...",
+            "code_template": "def fibonacci(n):\n    # 请在此处编写代码\n    # 返回斐波那契数列的第n项\n    # fibonacci(0) = 0\n    # fibonacci(1) = 1\n    # fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)\n    pass",
+            "test_cases": [
+                {"input": "0", "expected_output": "0"},
+                {"input": "1", "expected_output": "1"},
+                {"input": "5", "expected_output": "5"},
+                {"input": "10", "expected_output": "55"}
+            ],
+            "answer_code": "def fibonacci(n):\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b",
+            "explanation": "可以使用递归实现，但效率较低。推荐使用迭代方式，时间复杂度为O(n)。",
+            "language": "python"
+        },
+        {
+            "id": 18,
+            "type": "single_choice",
+            "difficulty": "hard",
+            "tags": ["面向对象", "继承"],
+            "question": "在Python中，关于类的继承，以下说法正确的是？",
+            "options": [
+                "A. Python只支持单继承",
+                "B. 子类不能重写父类的方法",
+                "C. 可以使用super()调用父类的方法",
+                "D. 子类会自动继承父类的私有属性"
+            ],
+            "answer": "C",
+            "explanation": "Python支持多继承，子类可以重写父类方法，使用super()可以调用父类方法。以双下划线开头的私有属性不会被直接继承（会进行名称改写）。"
+        }
+    ]
+}

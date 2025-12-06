@@ -1,0 +1,264 @@
+{
+    "meta": {
+        "name": "C语言入门题库_第三阶段",
+        "version": "1.0",
+        "author": "AI Assistant",
+        "description": "C语言进阶内容，涵盖结构体、动态内存管理、文件操作与预处理（81-100题）"
+    },
+    "questions": [
+        {
+            "id": 81,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["结构体"],
+            "question": "定义一个包含姓名(char[])和年龄(int)的结构体 Student，正确的写法是？",
+            "options": [
+                "A. struct Student { char name[20]; int age; };",
+                "B. struct Student { char name[20], int age };",
+                "C. Student struct { char name[20]; int age; };",
+                "D. struct { char name[20]; int age; } Student;"
+            ],
+            "answer": "A",
+            "explanation": "结构体定义的标准格式：struct 标签名 { 成员列表 }; 注意最后的分号。"
+        },
+        {
+            "id": 82,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["结构体"],
+            "question": "若有结构体变量 `stu`，访问其成员 `age` 使用符号 ____；若有结构体指针 `p` 指向 `stu`，访问成员 `age` 使用符号 ____。",
+            "answer": [".", "->"],
+            "explanation": "普通变量用点运算符(.)，指针变量用箭头运算符(->)。"
+        },
+        {
+            "id": 83,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["结构体"],
+            "question": "定义一个 Point 结构体（含x, y坐标），输入两个点的坐标，计算并输出它们的中点坐标。",
+            "code_template": "#include <stdio.h>\n\nstruct Point {\n    float x;\n    float y;\n};\n\nint main() {\n    struct Point p1, p2;\n    scanf(\"%f %f\", &p1.x, &p1.y);\n    scanf(\"%f %f\", &p2.x, &p2.y);\n    // 计算中点\n    return 0;\n}",
+            "test_cases": [
+                {"input": "0 0 4 4", "expected_output": "2.0 2.0"},
+                {"input": "1 1 3 3", "expected_output": "2.0 2.0"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nstruct Point {\n    float x;\n    float y;\n};\n\nint main() {\n    struct Point p1, p2;\n    scanf(\"%f %f\", &p1.x, &p1.y);\n    scanf(\"%f %f\", &p2.x, &p2.y);\n    printf(\"%.1f %.1f\", (p1.x + p2.x)/2, (p1.y + p2.y)/2);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "中点公式：((x1+x2)/2, (y1+y2)/2)。"
+        },
+        {
+            "id": 84,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["类型定义"],
+            "question": "使用 typedef 定义类型的语法正确的是？",
+            "options": [
+                "A. typedef int INTEGER;",
+                "B. typedef INTEGER int;",
+                "C. define int INTEGER;",
+                "D. int typedef INTEGER;"
+            ],
+            "answer": "A",
+            "explanation": "typedef 原类型名 新类型名;"
+        },
+        {
+            "id": 85,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["结构体", "数组"],
+            "question": "结构体数组：输入3个学生的学号和成绩，输出成绩最高的学生学号。",
+            "code_template": "#include <stdio.h>\n\ntypedef struct {\n    int id;\n    int score;\n} Student;\n\nint main() {\n    Student stus[3];\n    // 输入\n    // 查找最大值\n    return 0;\n}",
+            "test_cases": [
+                {"input": "101 80 102 95 103 88", "expected_output": "102"}
+            ],
+            "answer_code": "#include <stdio.h>\n\ntypedef struct {\n    int id;\n    int score;\n} Student;\n\nint main() {\n    Student stus[3];\n    for(int i=0; i<3; i++) scanf(\"%d %d\", &stus[i].id, &stus[i].score);\n    \n    int maxIdx = 0;\n    for(int i=1; i<3; i++) {\n        if(stus[i].score > stus[maxIdx].score) {\n            maxIdx = i;\n        }\n    }\n    printf(\"%d\", stus[maxIdx].id);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "遍历结构体数组，比较 score 成员。"
+        },
+        {
+            "id": 86,
+            "type": "judge",
+            "difficulty": "easy",
+            "tags": ["内存管理"],
+            "question": "使用 malloc 函数申请的内存，在程序结束前必须使用 free 释放，否则会造成内存泄漏。",
+            "answer": true,
+            "explanation": "虽然操作系统在程序结束时会回收，但在长期运行的服务中，不free是非常严重的bug。"
+        },
+        {
+            "id": 87,
+            "type": "fill_blank",
+            "difficulty": "medium",
+            "tags": ["内存管理"],
+            "question": "malloc 函数声明在 ____ 头文件中，其返回类型是 ____。",
+            "answer": ["<stdlib.h>|stdlib.h", "void*|void *"],
+            "explanation": "Standard Library。"
+        },
+        {
+            "id": 88,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["内存管理", "指针"],
+            "question": "动态数组：输入整数 n，使用 malloc 动态申请大小为 n 的 int 数组，输入 n 个数并输出它们的和，最后释放内存。",
+            "code_template": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int *arr = // 使用malloc\n    // 输入并计算\n    // 释放\n    return 0;\n}",
+            "test_cases": [
+                {"input": "3 10 20 30", "expected_output": "60"}
+            ],
+            "answer_code": "#include <stdio.h>\n#include <stdlib.h>\n\nint main() {\n    int n, sum = 0;\n    scanf(\"%d\", &n);\n    int *arr = (int*)malloc(n * sizeof(int));\n    if(arr == NULL) return 1;\n    \n    for(int i=0; i<n; i++) {\n        scanf(\"%d\", &arr[i]);\n        sum += arr[i];\n    }\n    printf(\"%d\", sum);\n    free(arr);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "malloc(n * sizeof(int)) 分配字节，用完后 free(arr)。"
+        },
+        {
+            "id": 89,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["联合体"],
+            "question": "union Data { int i; char c; }; sizeof(union Data) 的值通常是？(32位系统)",
+            "options": [
+                "A. 5",
+                "B. 4",
+                "C. 1",
+                "D. 8"
+            ],
+            "answer": "B",
+            "explanation": "联合体所有成员共享内存，其大小等于最大成员的大小。int(4) > char(1)。"
+        },
+        {
+            "id": 90,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["联合体"],
+            "question": "修改联合体(Union)中的一个成员的值，会影响其他成员的值。",
+            "answer": true,
+            "explanation": "因为它们共用同一块内存地址。"
+        },
+        {
+            "id": 91,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["预处理"],
+            "question": "#define SQR(x) x*x \n若执行 int a = SQR(2+3); 则 a 的值是？",
+            "options": [
+                "A. 25",
+                "B. 11",
+                "C. 13",
+                "D. 10"
+            ],
+            "answer": "B",
+            "explanation": "宏是文本替换。SQR(2+3) 变为 2+3*2+3 = 2+6+3 = 11。正确写法应为 #define SQR(x) ((x)*(x))。"
+        },
+        {
+            "id": 92,
+            "type": "fill_blank",
+            "difficulty": "easy",
+            "tags": ["预处理"],
+            "question": "用于包含头文件的预处理指令是 ____，用于定义宏常量的指令是 ____。",
+            "answer": ["#include", "#define"],
+            "explanation": "#include <...> 和 #define MAX 100。"
+        },
+        {
+            "id": 93,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["文件操作"],
+            "question": "若要以“只读”方式打开一个文本文件，fopen的模式字符串应为？",
+            "options": [
+                "A. \"w\"",
+                "B. \"r\"",
+                "C. \"a\"",
+                "D. \"wb\""
+            ],
+            "answer": "B",
+            "explanation": "r=read, w=write, a=append。"
+        },
+        {
+            "id": 94,
+            "type": "judge",
+            "difficulty": "medium",
+            "tags": ["文件操作"],
+            "question": "使用 fopen(\"file.txt\", \"w\") 打开文件时，如果文件已存在，其内容会被清空。",
+            "answer": true,
+            "explanation": "\"w\" 模式会截断文件（清空），如果想保留原内容追加需用 \"a\"。"
+        },
+        {
+            "id": 95,
+            "type": "coding",
+            "difficulty": "medium",
+            "tags": ["文件操作"],
+            "question": "编写代码：将字符串 \"Hello File\" 写入名为 \"test.txt\" 的文件中。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    FILE *fp = fopen(\"test.txt\", \"w\");\n    if(fp != NULL) {\n        // 写入操作\n        fclose(fp);\n    }\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": ""} 
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    FILE *fp = fopen(\"test.txt\", \"w\");\n    if(fp != NULL) {\n        fprintf(fp, \"Hello File\");\n        fclose(fp);\n    }\n    return 0;\n}",
+            "language": "c",
+            "explanation": "使用 fprintf 或 fputs 写入。"
+        },
+        {
+            "id": 96,
+            "type": "single_choice",
+            "difficulty": "easy",
+            "tags": ["枚举"],
+            "question": "enum Color {RED, GREEN, BLUE}; GREEN 的默认值是？",
+            "options": [
+                "A. 0",
+                "B. 1",
+                "C. 2",
+                "D. 随机值"
+            ],
+            "answer": "B",
+            "explanation": "枚举值默认从0开始递增，RED=0, GREEN=1, BLUE=2。"
+        },
+        {
+            "id": 97,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["位运算"],
+            "question": "输入一个整数，统计其二进制表示中 '1' 的个数。（例如 5 的二进制是 101，有2个1）。",
+            "code_template": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int count = 0;\n    // 位运算逻辑\n    printf(\"%d\", count);\n    return 0;\n}",
+            "test_cases": [
+                {"input": "5", "expected_output": "2"},
+                {"input": "7", "expected_output": "3"}
+            ],
+            "answer_code": "#include <stdio.h>\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int count = 0;\n    while(n != 0) {\n        if(n & 1) count++;\n        n = n >> 1;\n    }\n    printf(\"%d\", count);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "每次判断最低位是否为1 (n&1)，然后右移一位。"
+        },
+        {
+            "id": 98,
+            "type": "single_choice",
+            "difficulty": "medium",
+            "tags": ["命令行参数"],
+            "question": "int main(int argc, char *argv[]) 中，argc 表示？",
+            "options": [
+                "A. 程序名的长度",
+                "B. 命令行参数的个数",
+                "C. 命令行参数字符串数组",
+                "D. 环境变量"
+            ],
+            "answer": "B",
+            "explanation": "Argument Count。注意程序名本身也算一个参数，所以无参运行时argc通常为1。"
+        },
+        {
+            "id": 99,
+            "type": "fill_blank",
+            "difficulty": "hard",
+            "tags": ["链表", "结构体"],
+            "question": "链表节点通常包含数据域和 ____ 域。定义节点时，指针域的类型必须是指向 ____ 的指针。",
+            "answer": ["指针|next", "节点本身|struct Node"],
+            "explanation": "Self-referential structure。"
+        },
+        {
+            "id": 100,
+            "type": "coding",
+            "difficulty": "hard",
+            "tags": ["链表", "综合"],
+            "question": "压轴题：定义一个简单的链表节点，创建两个节点（数据分别为10和20），并将它们连接起来，最后打印第二个节点的数据。",
+            "code_template": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main() {\n    struct Node *head, *second;\n    // 创建节点并连接\n    // 打印 second->data\n    return 0;\n}",
+            "test_cases": [
+                {"input": "", "expected_output": "20"}
+            ],
+            "answer_code": "#include <stdio.h>\n#include <stdlib.h>\n\nstruct Node {\n    int data;\n    struct Node *next;\n};\n\nint main() {\n    struct Node *head = (struct Node*)malloc(sizeof(struct Node));\n    struct Node *second = (struct Node*)malloc(sizeof(struct Node));\n    \n    head->data = 10;\n    head->next = second;\n    \n    second->data = 20;\n    second->next = NULL;\n    \n    printf(\"%d\", head->next->data);\n    \n    free(head);\n    free(second);\n    return 0;\n}",
+            "language": "c",
+            "explanation": "这是数据结构的入门，手动链接节点。"
+        }
+    ]
+}
