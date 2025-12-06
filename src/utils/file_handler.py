@@ -14,45 +14,71 @@ from src.models.question import Question, create_question_from_dict
 from src.models.user_data import UserProgress
 
 
+import sys
+import shutil
+
+def get_base_path() -> Path:
+    """
+    获取应用基础路径
+    如果是打包环境，返回可执行文件所在目录
+    如果是开发环境，返回项目根目录
+    """
+    if getattr(sys, 'frozen', False):
+        return Path(sys.executable).parent
+    return Path(__file__).parent.parent.parent
+
+def get_resource_path(relative_path: str) -> Path:
+    """
+    获取资源文件路径（用于读取打包在exe内的文件）
+    """
+    if getattr(sys, 'frozen', False):
+        base_path = Path(sys._MEIPASS)
+    else:
+        base_path = Path(__file__).parent.parent.parent
+    return base_path / relative_path
+
 def get_data_dir() -> Path:
     """
     获取数据目录路径
-    数据目录位于项目根目录下的data文件夹
-    
-    返回：
-        Path: 数据目录的Path对象
+    优先使用用户目录下的data文件夹（可读写）
     """
-    # 获取当前文件所在目录，向上两级到项目根目录
-    current_dir = Path(__file__).parent.parent.parent
-    data_dir = current_dir / "data"
+    data_dir = get_base_path() / "data"
     
-    # 确保目录存在
+    # 如果数据目录不存在，且是打包环境，尝试从资源目录复制默认数据
+    if not data_dir.exists() and getattr(sys, 'frozen', False):
+        try:
+            default_data = get_resource_path("data")
+            if default_data.exists():
+                shutil.copytree(default_data, data_dir)
+        except Exception as e:
+            print(f"复制默认数据失败: {e}")
+            
     data_dir.mkdir(exist_ok=True)
-    
     return data_dir
-
 
 def get_questions_dir() -> Path:
     """
     获取题库文件目录路径
-    
-    返回：
-        Path: 题库目录的Path对象
     """
     questions_dir = get_data_dir() / "questions"
     questions_dir.mkdir(exist_ok=True)
     return questions_dir
 
-
 def get_config_dir() -> Path:
     """
     获取配置文件目录路径
-    
-    返回：
-        Path: 配置目录的Path对象
     """
-    current_dir = Path(__file__).parent.parent.parent
-    config_dir = current_dir / "config"
+    config_dir = get_base_path() / "config"
+    
+    # 如果配置目录不存在，且是打包环境，尝试从资源目录复制
+    if not config_dir.exists() and getattr(sys, 'frozen', False):
+        try:
+            default_config = get_resource_path("config")
+            if default_config.exists():
+                shutil.copytree(default_config, config_dir)
+        except Exception as e:
+            print(f"复制默认配置失败: {e}")
+            
     config_dir.mkdir(exist_ok=True)
     return config_dir
 
@@ -235,7 +261,9 @@ def load_settings(file_name: str = "settings.json") -> dict:
         "auto_save": True,           # 自动保存进度
         "show_explanation": True,    # 显示答案解析
         "code_font": "Consolas",     # 代码字体
-        "code_font_size": 12         # 代码字体大小
+        "code_font_size": 12,        # 代码字体大小
+        "ai_api_key": "",            # AI API密钥（硅基流动）
+        "ai_model": "Qwen/Qwen2.5-7B-Instruct" # 默认AI模型
     }
     
     if not file_path.exists():
