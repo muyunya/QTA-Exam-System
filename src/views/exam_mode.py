@@ -176,7 +176,7 @@ class ExamMode(ttkb.Toplevel):
         self.question_text = tk.Text(
             question_frame,
             wrap=tk.WORD,
-            font=("Microsoft YaHei UI", 12),
+            font=("Microsoft YaHei UI", 22),
             height=5,
             state=tk.DISABLED,
             relief=tk.FLAT,
@@ -300,7 +300,7 @@ class ExamMode(ttkb.Toplevel):
             ttk.Label(
                 option_card,
                 text=letter,
-                font=("Microsoft YaHei UI", 12, "bold"),
+                font=("Microsoft YaHei UI", 18, "bold"),
                 width=3,
                 anchor=CENTER,
                 bootstyle="inverse-primary"
@@ -339,7 +339,7 @@ class ExamMode(ttkb.Toplevel):
             ttk.Label(
                 option_card,
                 text=letter,
-                font=("Microsoft YaHei UI", 12, "bold"),
+                font=("Microsoft YaHei UI", 18, "bold"),
                 width=3,
                 anchor=CENTER,
                 bootstyle="inverse-info"
@@ -394,7 +394,7 @@ class ExamMode(ttkb.Toplevel):
                 font=("Microsoft YaHei UI", 11)
             ).pack(side=LEFT, padx=(0, 10))
             
-            entry = ttk.Entry(frame, font=("Microsoft YaHei UI", 11))
+            entry = ttk.Entry(frame, font=("Microsoft YaHei UI", 18))
             entry.pack(side=LEFT, fill=X, expand=True)
             self.fill_blank_entries.append(entry)
     

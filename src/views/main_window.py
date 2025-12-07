@@ -77,21 +77,33 @@ class MainWindow:
         # 尝试加载上次的题库
         self._load_last_bank()
     
+    def _should_ignore_shortcut(self, event) -> bool:
+        """
+        检查是否应该忽略快捷键
+        当焦点在输入框或文本框时，应该忽略大部分快捷键
+        """
+        widget = event.widget
+        try:
+            # 检查控件类名
+            class_name = widget.winfo_class()
+            if class_name in ('Entry', 'Text', 'TEntry'):
+                return True
+        except:
+            pass
+        return False
+
     def _bind_shortcuts(self):
         """绑定快捷键"""
         # 数字键选择选项
-        self.root.bind("1", lambda e: self._quick_select("A"))
-        self.root.bind("2", lambda e: self._quick_select("B"))
-        self.root.bind("3", lambda e: self._quick_select("C"))
-        self.root.bind("4", lambda e: self._quick_select("D"))
-        self.root.bind("5", lambda e: self._quick_select("E"))
+        for i, option in enumerate(["A", "B", "C", "D", "E"], 1):
+            self.root.bind(str(i), lambda e, opt=option: self._quick_select(opt) if not self._should_ignore_shortcut(e) else None)
         
         # 回车提交
-        self.root.bind("<Return>", lambda e: self._submit_answer())
+        self.root.bind("<Return>", lambda e: self._submit_answer() if not self._should_ignore_shortcut(e) else None)
         
         # 左右箭头切换题目
-        self.root.bind("<Left>", lambda e: self._prev_question())
-        self.root.bind("<Right>", lambda e: self._next_question())
+        self.root.bind("<Left>", lambda e: self._prev_question() if not self._should_ignore_shortcut(e) else None)
+        self.root.bind("<Right>", lambda e: self._next_question() if not self._should_ignore_shortcut(e) else None)
         
         # Ctrl+O 打开题库
         self.root.bind("<Control-o>", lambda e: self._open_question_bank())
@@ -447,7 +459,7 @@ class MainWindow:
         ttk.Label(
             q_container,
             text=question.question,
-            font=("Microsoft YaHei UI", 14),
+            font=("Microsoft YaHei UI", 22),
             wraplength=700
         ).pack(fill=X, pady=(0, 20), anchor=W)
         
@@ -487,7 +499,7 @@ class MainWindow:
             letter_label = ttk.Label(
                 option_card,
                 text=letter,
-                font=("Microsoft YaHei UI", 12, "bold"),
+                font=("Microsoft YaHei UI", 18, "bold"),
                 width=3,
                 anchor=CENTER,
                 bootstyle="inverse-primary"
@@ -535,7 +547,7 @@ class MainWindow:
             letter_label = ttk.Label(
                 option_card,
                 text=letter,
-                font=("Microsoft YaHei UI", 12, "bold"),
+                font=("Microsoft YaHei UI", 18, "bold"),
                 width=3,
                 anchor=CENTER,
                 bootstyle="inverse-info"
@@ -573,7 +585,7 @@ class MainWindow:
                 font=("Microsoft YaHei UI", 11)
             ).pack(side=LEFT, padx=(10, 5))
             
-            entry = ttk.Entry(frame, font=("Microsoft YaHei UI", 12), width=40)
+            entry = ttk.Entry(frame, font=("Microsoft YaHei UI", 18), width=40)
             entry.pack(side=LEFT, padx=5)
             self.fill_blank_entries.append(entry)
     
@@ -614,7 +626,7 @@ class MainWindow:
         self.short_answer_text = tk.Text(
             answer_frame,
             height=8,
-            font=("Microsoft YaHei UI", 12),
+            font=("Microsoft YaHei UI", 18),
             wrap=tk.WORD
         )
         self.short_answer_text.pack(fill=X, pady=5, padx=10)
@@ -623,7 +635,7 @@ class MainWindow:
             ttk.Label(
                 answer_frame,
                 text=f"提示关键词：{', '.join(question.keywords)}",
-                font=("Microsoft YaHei UI", 10),
+                font=("Microsoft YaHei UI", 14),
                 foreground="gray"
             ).pack(fill=X, pady=5)
     

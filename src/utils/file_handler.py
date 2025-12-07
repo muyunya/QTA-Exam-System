@@ -261,7 +261,7 @@ def load_settings(file_name: str = "settings.json") -> dict:
         "auto_save": True,           # 自动保存进度
         "show_explanation": True,    # 显示答案解析
         "code_font": "Consolas",     # 代码字体
-        "code_font_size": 12,        # 代码字体大小
+        "code_font_size": 16,        # 代码字体大小
         "ai_api_key": "",            # AI API密钥（硅基流动）
         "ai_model": "Qwen/Qwen2.5-7B-Instruct" # 默认AI模型
     }

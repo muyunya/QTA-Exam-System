@@ -69,7 +69,7 @@ class CodeBlock(tk.Frame):
     def __init__(self, parent, code: str = "", language: str = "python",
                  editable: bool = False, height: int = 15, 
                  show_line_numbers: bool = True,
-                 font_family: str = "Consolas", font_size: int = 12,
+                 font_family: str = "Consolas", font_size: int = 16,
                  **kwargs):
         """
         初始化代码展示组件
